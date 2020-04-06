@@ -1,0 +1,149 @@
+type agent = enum {Alice, Bob, Intruder};
+type key = enum {KeyA, KeyB, KeyI};
+
+function key_of_agent(a:agent) returns(k:key)
+k = if a=Alice then KeyA else if a=Bob then KeyB else KeyI;
+
+type data = enum {No_data, AgentA, AgentB, AgentI, NonceA, NonceB, NonceI};
+
+function data_is_agent(d:data) returns(b:bool)
+b = d=AgentA or d=AgentB or d=AgentI;
+
+function data_to_agent(d:data) returns(a:agent)
+a = if d=AgentA then Alice else if d=AgentB then Bob else Intruder;
+
+function nonce_of_agent(a:agent) returns(d:data)
+d = if a=Alice then NonceA else if a=Bob then NonceB else NonceI;
+
+type msg_kind = enum {No_msg, Msg1, Msg2, Msg3};
+type msg = {kind : msg_kind, dest : agent, k : key, d:data^2};
+const Msg_null: msg = {kind : No_msg, dest : Alice, k : KeyA, d : No_data^2};
+
+node alice(msg_in: msg; Partner_in: agent) returns (msg_out:msg; Partner: agent; status: bool)
+var
+	doit: bool last = false;
+	status_memo: bool last = false;
+let
+	Partner = fby(Partner;1;Partner_in); -- celui du 1ier cycle
+	automaton
+	initial state send_msg1
+	unless if last'doit resume recv_msg2_and_send_msg3;
+	let
+		doit = msg_in.kind = No_msg and Partner <> Alice;
+		msg_out = if doit
+			then {kind:Msg1,  -- <NA,A>P
+					dest:Partner,
+					k:key_of_agent(Partner),
+					d:[NonceA, AgentA]}
+			else msg_in;
+	tel
+	state recv_msg2_and_send_msg3
+	unless if last'doit resume connected;
+	let
+		doit = msg_in.kind = Msg2 and msg_in.dest = Alice and msg_in.k = KeyA and msg_in.d[0] = NonceA;
+		-- c'est cette derniere egalite qui prouve que le message vient de P
+		msg_out = if doit  -- alors msg_in.d[1] vaut NonceP
+			then {kind:Msg3, -- <NP>P
+				dest:Partner,
+				k: key_of_agent(Partner),
+				d:[msg_in.d[1], No_data]} -- partner nonce
+			else msg_in;
+		status_memo = if doit then true else last'status_memo;
+	tel
+	state connected
+	let
+		msg_out = msg_in;
+		status_memo = true;
+	tel
+	returns ..;
+	status = status_memo;
+tel;
+
+node bob(msg_in: msg) returns (msg_out:msg; partner: agent; status: bool)
+var
+	doit: bool last = false;
+	partner_memo: agent last = Bob;
+	status_memo: bool last = false;
+let
+	automaton
+	initial state recv_msg1_and_send_msg2
+	unless if last'doit resume recv_msg3;
+	let
+		-- <A,NA>B
+		doit = msg_in.kind = Msg1 and msg_in.dest = Bob and msg_in.k = KeyB
+			and data_is_agent(msg_in.d[1]) and msg_in.d[1] <> AgentB;
+		partner_memo = if doit then data_to_agent(msg_in.d[1]) else last'partner_memo;
+		msg_out = if doit
+			then {kind: Msg2,	-- <NA,NB>A
+				dest: partner_memo,
+				k: key_of_agent(partner_memo),
+				d: [msg_in.d[0], NonceB]} -- partner nonce
+			else msg_in;
+	tel
+	state recv_msg3
+	unless if last'doit resume connected;
+	let
+		doit = msg_in.kind = Msg3 and msg_in.dest = Bob and msg_in.k = KeyB
+			and msg_in.d[0] = NonceB and msg_in.d[1] = No_data;
+		msg_out = if doit then Msg_null else msg_in;
+		status_memo = if doit then true else last'status_memo;
+	tel
+	state connected
+	let
+		msg_out = msg_in;
+		status_memo = true;
+	tel
+	returns ..;
+	partner = partner_memo;
+	status = status_memo;
+tel;
+
+type i_action = enum {No_action, Memo, Erase, Reuse_for_A, Reuse_for_B,
+	Msg1_for_A, Msg1_for_B, Msg1Fake_for_A, Msg1Fake_for_B, Msg3_for_A, Msg3_for_B};
+
+node intruder(msg_in: msg; action: i_action) returns (msg_out:msg; knowNA,knowNB: bool last=false)
+var
+	look: bool;
+	msg_memo: msg last=Msg_null;
+let
+	look = msg_in.kind <> No_msg and msg_in.k = KeyI;
+	knowNA = last'knowNA or (look and (msg_in.d[0] = NonceA or msg_in.d[1] = NonceA));
+	knowNB = last'knowNB or (look and (msg_in.d[0] = NonceB or msg_in.d[1] = NonceB));
+	activate foo when action match
+	| No_action: msg_out = msg_in;
+	| Memo: let
+		msg_out = msg_in;
+		msg_memo = msg_in; -- peut etre un No_msg
+		tel
+	| Erase: msg_out = Msg_null;
+	| Reuse_for_A: msg_out = (msg_memo with .dest = Alice);
+	| Reuse_for_B: msg_out = (msg_memo with .dest = Bob);
+	| Msg1_for_A: msg_out = {kind:Msg1, dest:Alice, k:KeyA, d:[NonceI,AgentI]};
+	| Msg1_for_B: msg_out = {kind:Msg1, dest:Bob  , k:KeyB, d:[NonceI,AgentI]};
+	| Msg1Fake_for_A: msg_out = {kind:Msg1, dest:Alice, k:KeyA, d:[if knowNB then NonceB else NonceI,AgentB]};
+	| Msg1Fake_for_B: msg_out = {kind:Msg1, dest:Bob  , k:KeyB, d:[if knowNA then NonceA else NonceI,AgentA]};
+	| Msg3_for_A: msg_out = {kind:Msg3, dest:Alice, k:KeyA, d:[if knowNA then NonceA else NonceI,No_data]};
+	| Msg3_for_B: msg_out = {kind:Msg3, dest:Bob  , k:KeyB, d:[if knowNB then NonceB else NonceI,No_data]};
+	returns ..;
+tel;
+
+node seq(clock a: agent; Alice_partner: agent; intruder_action: i_action)
+returns(msg_out:msg;
+	partnerA: agent last = Alice; partnerB: agent last = Bob;
+	statusA,statusB,knowNA,knowNB:bool last=false;
+	secure, confidential:bool)
+var
+	msg_in: msg;
+	success : bool;
+let
+	activate foo when a match
+	| Alice:    let msg_out,partnerA,statusA = alice(msg_in, /*Intruder*/ Alice_partner); tel
+	| Bob:      let msg_out,partnerB,statusB = bob(msg_in); tel
+	| Intruder: let msg_out,knowNA,knowNB = intruder(msg_in, intruder_action); tel
+	returns ..;
+	msg_in = fby(msg_out;1; Msg_null);
+	success = statusA and statusB;
+	secure = not success or ((partnerA = Bob) = (partnerB = Alice));
+	confidential =  (not (statusA and partnerA=Bob) or not knowNA)
+				and (not (statusB and partnerB=Alice) or not knowNB);
+tel;

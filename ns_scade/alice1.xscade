@@ -1419,10 +1419,10 @@
 								</Edge>
 								<StateMachineGE presentable="!ed/1cf/7A5C/3BF8/5e8cac03539">
 									<position>
-										<Point x="661" y="2487"/>
+										<Point x="1852" y="2487"/>
 									</position>
 									<size>
-										<Size width="11113" height="19129"/>
+										<Size width="8626" height="19129"/>
 									</size>
 								</StateMachineGE>
 								<StateGE presentable="!ed/1e7/7A5C/3BF8/5e8cac642d4d">
@@ -1669,8 +1669,8 @@
 									<positions>
 										<Point x="6324" y="11933"/>
 										<Point x="7117" y="11933"/>
-										<Point x="7117" y="11906"/>
-										<Point x="8705" y="11906"/>
+										<Point x="7117" y="11933"/>
+										<Point x="8705" y="11933"/>
 									</positions>
 								</Edge>
 								<EquationGE presentable="!ed/7df/7A5C/3BF8/5e8cd05e31f9">
@@ -1878,7 +1878,7 @@
 										<Point x="1878" y="9658"/>
 									</labelPos>
 									<slashPos>
-										<Point x="3677" y="9658"/>
+										<Point x="3678" y="9657"/>
 									</slashPos>
 								</TransitionGE>
 								<TransitionGE presentable="!ed/30a/2AD9/6CC/5e8d94575d4b">
@@ -1895,7 +1895,7 @@
 										<Point x="2382" y="17305"/>
 									</labelPos>
 									<slashPos>
-										<Point x="4181" y="17305"/>
+										<Point x="4180" y="17304"/>
 									</slashPos>
 								</TransitionGE>
 								<EquationGE presentable="!ed/33f/2AD9/6CC/5e8d95176f6e">

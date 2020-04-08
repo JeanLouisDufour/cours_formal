@@ -12,7 +12,7 @@ b = d=AgentA or d=AgentB or d=AgentI;
 function data_to_agent(d:data) returns(a:agent)
 a = if d=AgentA then Alice else if d=AgentB then Bob else Intruder;
 
-function nonce_of_agent(a:agent) returns(d:data)
+function FORBIDDEN_nonce_of_agent(a:agent) returns(d:data)
 d = if a=Alice then NonceA else if a=Bob then NonceB else NonceI;
 
 type msg_kind = enum {No_msg, Msg1, Msg2, Msg3};

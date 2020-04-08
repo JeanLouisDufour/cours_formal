@@ -1,0 +1,86 @@
+$**************  SCADETOC Version 19.2 (build 20180628) **************
+** Generation date: 2020-04-06T19:07:07
+** Command: scade -code "E:\github\cours_formal\ns_scade\ns_scade.etp" -root seq -conf Simulation -build -all
+*************************************************************$
+*** Generated Files Information (GENFIL): KCG- Generated files
+  at file E:\github\cours_formal\ns_scade\Simulation\mapping.xml, line 0, character 0
+ ~mapping.xml
+  at file E:\github\cours_formal\ns_scade\Simulation\kcg_metrics.txt, line 0, character 0
+ ~kcg_metrics.txt
+  at file E:\github\cours_formal\ns_scade\Simulation\seq.c, line 0, character 0
+ ~seq.c
+  at file E:\github\cours_formal\ns_scade\Simulation\intruder.c, line 0, character 0
+ ~intruder.c
+  at file E:\github\cours_formal\ns_scade\Simulation\bob.c, line 0, character 0
+ ~bob.c
+  at file E:\github\cours_formal\ns_scade\Simulation\data_to_agent.c, line 0, character 0
+ ~data_to_agent.c
+  at file E:\github\cours_formal\ns_scade\Simulation\data_is_agent.c, line 0, character 0
+ ~data_is_agent.c
+  at file E:\github\cours_formal\ns_scade\Simulation\alice.c, line 0, character 0
+ ~alice.c
+  at file E:\github\cours_formal\ns_scade\Simulation\key_of_agent.c, line 0, character 0
+ ~key_of_agent.c
+  at file E:\github\cours_formal\ns_scade\Simulation\seq.h, line 0, character 0
+ ~seq.h
+  at file E:\github\cours_formal\ns_scade\Simulation\intruder.h, line 0, character 0
+ ~intruder.h
+  at file E:\github\cours_formal\ns_scade\Simulation\bob.h, line 0, character 0
+ ~bob.h
+  at file E:\github\cours_formal\ns_scade\Simulation\data_to_agent.h, line 0, character 0
+ ~data_to_agent.h
+  at file E:\github\cours_formal\ns_scade\Simulation\data_is_agent.h, line 0, character 0
+ ~data_is_agent.h
+  at file E:\github\cours_formal\ns_scade\Simulation\alice.h, line 0, character 0
+ ~alice.h
+  at file E:\github\cours_formal\ns_scade\Simulation\key_of_agent.h, line 0, character 0
+ ~key_of_agent.h
+  at file E:\github\cours_formal\ns_scade\Simulation\kcg_types.h, line 0, character 0
+ ~kcg_types.h
+  at file E:\github\cours_formal\ns_scade\Simulation\kcg_consts.h, line 0, character 0
+ ~kcg_consts.h
+  at file E:\github\cours_formal\ns_scade\Simulation\kcg_sensors.h, line 0, character 0
+ ~kcg_sensors.h
+  at file E:\github\cours_formal\ns_scade\Simulation\kcg_types.c, line 0, character 0
+ ~kcg_types.c
+  at file E:\github\cours_formal\ns_scade\Simulation\kcg_consts.c, line 0, character 0
+ ~kcg_consts.c
+  at file E:\github\cours_formal\ns_scade\Simulation\config.txt, line 0, character 0
+ ~config.txt
+*** Generated Files Information (GENFIL): Code Generator Generated files
+  at file E:\github\cours_formal\ns_scade\Simulation\user_macros.h, line 0, character 0
+ ~user_macros.h
+  at file E:\github\cours_formal\ns_scade\Simulation\kcg_imported_types.h, line 0, character 0
+ ~kcg_imported_types.h
+  at file E:\github\cours_formal\ns_scade\Simulation\sc2c.log, line 0, character 0
+ ~sc2c.log
+  at file E:\github\cours_formal\ns_scade\Simulation\sc2c_integration_files.txt, line 0, character 0
+ ~sc2c_integration_files.txt
+*** Generated Files Information (GENFIL): Type Utils Generated files
+  at file E:\github\cours_formal\ns_scade\Simulation\ns_scade_type.h, line 0, character 0
+ ~ns_scade_type.h
+  at file E:\github\cours_formal\ns_scade\Simulation\ns_scade_type.c, line 0, character 0
+ ~ns_scade_type.c
+*** Generated Files Information (GENFIL): Mapping Utils Generated files
+  at file E:\github\cours_formal\ns_scade\Simulation\ns_scade_mapping.h, line 0, character 0
+ ~ns_scade_mapping.h
+  at file E:\github\cours_formal\ns_scade\Simulation\ns_scade_mapping.c, line 0, character 0
+ ~ns_scade_mapping.c
+*** Generated Files Information (GENFIL): Simulator Generated files
+  at file E:\github\cours_formal\ns_scade\Simulation\ns_scade_interface.h, line 0, character 0
+ ~ns_scade_interface.h
+  at file E:\github\cours_formal\ns_scade\Simulation\ns_scade_interface.c, line 0, character 0
+ ~ns_scade_interface.c
+  at file E:\github\cours_formal\ns_scade\Simulation\ns_scade_dll.c, line 0, character 0
+ ~ns_scade_dll.c
+*** Generated Files Information (GENFIL): Build Generated files
+  at file E:\github\cours_formal\ns_scade\Simulation\Makefile_win64, line 0, character 0
+ ~Makefile_win64
+  at file E:\github\cours_formal\ns_scade\Simulation\seq.dll, line 0, character 0
+ ~seq.dll
+  at file E:\github\cours_formal\ns_scade\Simulation\seq.exe, line 0, character 0
+ ~seq.exe
+$**************  SCADETOC Version 19.2 (build 20180628) **************
+** Generation date: 2020-04-06T19:07:19
+** sc2c.log
+*************************************************************$

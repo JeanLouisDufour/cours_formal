@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<File xmlns="http://www.esterel-technologies.com/ns/scade/6" xmlns:ed="http://www.esterel-technologies.com/ns/scade/pragmas/editor/5" xmlns:kcg="http://www.esterel-technologies.com/ns/scade/pragmas/codegen/3">
+	<declarations>
+		<Operator kind="node" name="Operator9">
+			<pragmas>
+				<ed:Operator oid="!ed/f2/7A5C/3BF8/5e8caa6d1d78" xmlns="http://www.esterel-technologies.com/ns/scade/pragmas/editor/5">
+					<diagrams>
+						<NetDiagram name="Operator9_1" landscape="true" format="A4 (210 297)" oid="!ed/f3/7A5C/3BF8/5e8caa6d7caa"/>
+					</diagrams>
+				</ed:Operator>
+			</pragmas>
+		</Operator>
+	</declarations>
+</File>

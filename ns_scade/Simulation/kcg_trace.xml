@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+  <Model commandLine="" date="">
+    <Option name="use_types" value="#off#"/>
+    <Option name="imported_root_package" value="#off#"/>
+    <Option name="root_package" value="#off#"/>
+    <Option name="xml_basename" value="kcg_xml_filter_out.scade"/>
+    <Option name="state_vector" value="#off#"/>
+    <Option name="static" value="#off#"/>
+    <Option name="separate_io_all" value="#off#"/>
+    <Option name="no_separate_io" value="#off#"/>
+    <Option name="separate_io" value="#off#"/>
+    <Option name="warn_error" value="#off#"/>
+    <Option name="short_circuit" value="#off#"/>
+    <Option name="wrap_c_ops" value="#off#"/>
+    <Option name="input_file" value="E:/github/cours_formal/ns_scade/Simulation/scade_model_without_unused.scade"/>
+    <Option name="probes" value="#on#"/>
+    <Option name="no_observe" value="#off#"/>
+    <Option name="observe" value="#off#"/>
+    <Option name="debug" value="#on#"/>
+    <Option name="user_config" value="./user_macros.h"/>
+    <Option name="input_threshold" value="#off#"/>
+    <Option name="header" value="#off#"/>
+    <Option name="significance_length" value="31"/>
+    <Option name="name_length" value="200"/>
+    <Option name="globals_prefix" value="#off#"/>
+    <Option name="keep_asserts" value="#off#"/>
+    <Option name="global_root_context" value="#off#"/>
+    <Option name="expall" value="#off#"/>
+    <Option name="noexp" value="#off#"/>
+    <Option name="exp" value="#off#"/>
+    <Option name="target_dir" value="E:/github/cours_formal/ns_scade/Simulation"/>
+    <Option name="target" value="C"/>
+    <Option name="root" value="seq"/>
+    <Option name="auth" value="#off#"/>
+    <Constant scadeName="Msg_null" scadeType="msg" targetName="Msg_null" targetType="msg"/>
+    <EnumType scadeName="msg_kind" targetName="msg_kind">
+      <EnumVal scadeName="No_msg" targetName="No_msg"/>
+      <EnumVal scadeName="Msg1" targetName="Msg1"/>
+      <EnumVal scadeName="Msg2" targetName="Msg2"/>
+      <EnumVal scadeName="Msg3" targetName="Msg3"/>
+    </EnumType>
+    <EnumType scadeName="agent" targetName="agent">
+      <EnumVal scadeName="Alice" targetName="Alice"/>
+      <EnumVal scadeName="Bob" targetName="Bob"/>
+      <EnumVal scadeName="Intruder" targetName="Intruder"/>
+    </EnumType>
+    <EnumType scadeName="key" targetName="key">
+      <EnumVal scadeName="KeyA" targetName="KeyA"/>
+      <EnumVal scadeName="KeyB" targetName="KeyB"/>
+      <EnumVal scadeName="KeyI" targetName="KeyI"/>
+    </EnumType>
+    <EnumType scadeName="data" targetName="data">
+      <EnumVal scadeName="No_data" targetName="No_data"/>
+      <EnumVal scadeName="AgentA" targetName="AgentA"/>
+      <EnumVal scadeName="AgentB" targetName="AgentB"/>
+      <EnumVal scadeName="AgentI" targetName="AgentI"/>
+      <EnumVal scadeName="NonceA" targetName="NonceA"/>
+      <EnumVal scadeName="NonceB" targetName="NonceB"/>
+      <EnumVal scadeName="NonceI" targetName="NonceI"/>
+    </EnumType>
+    <NamedType refType="msg" scadeName="msg" targetName="msg"/>
+    <EnumType scadeName="i_action" targetName="i_action">
+      <EnumVal scadeName="No_action" targetName="No_action"/>
+      <EnumVal scadeName="Memo" targetName="Memo"/>
+      <EnumVal scadeName="Erase" targetName="Erase"/>
+      <EnumVal scadeName="Reuse_for_A" targetName="Reuse_for_A"/>
+      <EnumVal scadeName="Reuse_for_B" targetName="Reuse_for_B"/>
+      <EnumVal scadeName="Msg1_for_A" targetName="Msg1_for_A"/>
+      <EnumVal scadeName="Msg1_for_B" targetName="Msg1_for_B"/>
+      <EnumVal scadeName="Msg1Fake_for_A" targetName="Msg1Fake_for_A"/>
+      <EnumVal scadeName="Msg1Fake_for_B" targetName="Msg1Fake_for_B"/>
+      <EnumVal scadeName="Msg3_for_A" targetName="Msg3_for_A"/>
+      <EnumVal scadeName="Msg3_for_B" targetName="Msg3_for_B"/>
+    </EnumType>
+    <RootNode headerFile="seq.h" scadeName="seq" targetCycleFct="seq" targetInitFct="seq_reset" targetInitializationFct="seq_init">
+      <Input inCtx="true" scadeName="a" scadeType="agent" targetName="a" targetType="agent"/>
+      <Input inCtx="true" scadeName="Alice_partner" scadeType="agent" targetName="Alice_partner" targetType="agent"/>
+      <Input inCtx="true" scadeName="intruder_action" scadeType="i_action" targetName="intruder_action" targetType="i_action"/>
+      <Output inCtx="true" scadeName="msg_out" scadeType="msg" targetName="msg_out" targetType="msg"/>
+      <Output inCtx="true" scadeName="partnerA" scadeType="agent" targetName="partnerA" targetType="agent"/>
+      <Output inCtx="true" scadeName="partnerB" scadeType="agent" targetName="partnerB" targetType="agent"/>
+      <Output inCtx="true" scadeName="statusA" scadeType="bool" targetName="statusA" targetType="kcg_bool"/>
+      <Output inCtx="true" scadeName="statusB" scadeType="bool" targetName="statusB" targetType="kcg_bool"/>
+      <Output inCtx="true" scadeName="knowNA" scadeType="bool" targetName="knowNA" targetType="kcg_bool"/>
+      <Output inCtx="true" scadeName="knowNB" scadeType="bool" targetName="knowNB" targetType="kcg_bool"/>
+      <Output inCtx="true" scadeName="secure" scadeType="bool" targetName="secure" targetType="kcg_bool"/>
+      <Output inCtx="true" scadeName="confidential" scadeType="bool" targetName="confidential" targetType="kcg_bool"/>
+      <Local inCtx="true" scadeName="msg_in" scadeType="msg" targetName="msg_in" targetType="msg"/>
+      <Local inCtx="true" scadeName="success" scadeType="bool" targetName="success" targetType="kcg_bool"/>
+      <ActivateWhen scadeName="foo" targetWhenType="agent">
+        <Condition targetName="a"/>
+        <Match scadeName="Alice" targetName="Alice">
+          <NodeInstance clockVal="Alice" clockVar="a" refName="alice" scadeName="alice">
+            <OutCtxVar clockVal="Alice" clockVar="a" targetName="Context_alice"/>
+          </NodeInstance>
+        </Match>
+        <Match scadeName="Bob" targetName="Bob">
+          <NodeInstance clockVal="Bob" clockVar="a" refName="bob" scadeName="bob">
+            <OutCtxVar clockVal="Bob" clockVar="a" targetName="Context_bob"/>
+          </NodeInstance>
+        </Match>
+        <Match scadeName="Intruder" targetName="Intruder">
+          <NodeInstance clockVal="Intruder" clockVar="a" refName="intruder" scadeName="intruder">
+            <OutCtxVar clockVal="Intruder" clockVar="a" targetName="Context_intruder"/>
+          </NodeInstance>
+        </Match>
+      </ActivateWhen>
+      <FbyOp>
+        <Init inCtx="true" targetName="init" targetType="kcg_bool"/>
+        <Memory inCtx="true" targetName="msg_out" targetType="msg"/>
+      </FbyOp>
+      <Memory inCtx="true" targetName="msg_out" targetType="msg"/>
+      <Init inCtx="true" targetName="init" targetType="kcg_bool"/>
+      <OutCtxType targetName="outC_seq"/>
+      <InCtxType targetName="inC_seq"/>
+    </RootNode>
+    <NoExpNode headerFile="alice.h" scadeName="alice" targetCycleFct="alice" targetInitFct="alice_reset" targetInitializationFct="alice_init">
+      <Input scadeName="msg_in" scadeType="msg" targetName="msg_in" targetType="msg"/>
+      <Input scadeName="Partner_in" scadeType="agent" targetName="Partner_in" targetType="agent"/>
+      <Output inCtx="true" scadeName="msg_out" scadeType="msg" targetName="msg_out" targetType="msg"/>
+      <Output inCtx="true" scadeName="Partner" scadeType="agent" targetName="Partner" targetType="agent"/>
+      <Output inCtx="true" scadeName="status" scadeType="bool" targetName="status" targetType="kcg_bool"/>
+      <Local inCtx="true" scadeName="doit" scadeType="bool" targetName="doit" targetType="kcg_bool"/>
+      <Local inCtx="true" scadeName="status_memo" scadeType="bool" targetName="status_memo" targetType="kcg_bool"/>
+      <FbyOp>
+        <Init inCtx="true" targetName="init" targetType="kcg_bool"/>
+        <Memory inCtx="true" targetName="Partner" targetType="agent"/>
+      </FbyOp>
+      <Automaton targetStatesType="_2_SSM_ST" targetTransitionsType="_3_SSM_TR">
+        <State scadeName="send_msg1" targetName="SSM_st_send_msg1">
+          <NodeInstance refName="key_of_agent" scadeName="key_of_agent"/>
+          <Fork priority="1">
+            <Condition/>
+            <Action>
+              <Last/>
+            </Action>
+            <Transition kind="strong" scadeDest="recv_msg2_and_send_msg3" targetName="SSM_TR_send_msg1_recv_msg2_and_send_msg3_1_send_msg1"/>
+          </Fork>
+        </State>
+        <State scadeName="recv_msg2_and_send_msg3" targetName="SSM_st_recv_msg2_and_send_msg3">
+          <NodeInstance refName="key_of_agent" scadeName="key_of_agent"/>
+          <Last/>
+          <Fork priority="1">
+            <Condition/>
+            <Action>
+              <Last/>
+            </Action>
+            <Transition kind="strong" scadeDest="connected" targetName="SSM_TR_recv_msg2_and_send_msg3_connected_1_recv_msg2_and_send_msg3"/>
+          </Fork>
+        </State>
+        <State scadeName="connected" targetName="SSM_st_connected"/>
+        <ActiveState inCtx="true" targetName="state_act"/>
+        <SelectedState inCtx="true" targetName="state_sel"/>
+        <NextState inCtx="true" mem="true" targetName="state_nxt"/>
+        <ResetActiveState inCtx="true" mem="true" targetName="reset_act"/>
+        <ResetNextState inCtx="true" mem="true" targetName="reset_nxt"/>
+        <StrongTransition inCtx="true" targetName="_fired_strong"/>
+        <WeakTransition inCtx="true" targetName="_fired"/>
+      </Automaton>
+      <Memory inCtx="true" targetName="Partner" targetType="agent"/>
+      <Init inCtx="true" targetName="init" targetType="kcg_bool"/>
+      <Memory inCtx="true" targetName="doit" targetType="kcg_bool"/>
+      <Memory inCtx="true" targetName="status_memo" targetType="kcg_bool"/>
+      <OutCtxType targetName="outC_alice"/>
+    </NoExpNode>
+    <NoExpNode headerFile="key_of_agent.h" scadeName="key_of_agent" targetCycleFct="key_of_agent">
+      <Input scadeName="a" scadeType="agent" targetName="a" targetType="agent"/>
+      <Output scadeName="k" scadeType="key" targetName="k" targetType="key"/>
+    </NoExpNode>
+    <NoExpNode headerFile="bob.h" scadeName="bob" targetCycleFct="bob" targetInitFct="bob_reset" targetInitializationFct="bob_init">
+      <Input scadeName="msg_in" scadeType="msg" targetName="msg_in" targetType="msg"/>
+      <Output inCtx="true" scadeName="msg_out" scadeType="msg" targetName="msg_out" targetType="msg"/>
+      <Output inCtx="true" scadeName="partner" scadeType="agent" targetName="partner" targetType="agent"/>
+      <Output inCtx="true" scadeName="status" scadeType="bool" targetName="status" targetType="kcg_bool"/>
+      <Local inCtx="true" scadeName="doit" scadeType="bool" targetName="doit" targetType="kcg_bool"/>
+      <Local inCtx="true" scadeName="partner_memo" scadeType="agent" targetName="partner_memo" targetType="agent"/>
+      <Local inCtx="true" scadeName="status_memo" scadeType="bool" targetName="status_memo" targetType="kcg_bool"/>
+      <Automaton targetStatesType="SSM_ST" targetTransitionsType="SSM_TR">
+        <State scadeName="recv_msg1_and_send_msg2" targetName="SSM_st_recv_msg1_and_send_msg2">
+          <NodeInstance refName="data_is_agent" scadeName="data_is_agent"/>
+          <Last/>
+          <NodeInstance refName="data_to_agent" scadeName="data_to_agent"/>
+          <NodeInstance refName="key_of_agent" scadeName="key_of_agent"/>
+          <Fork priority="1">
+            <Condition/>
+            <Action>
+              <Last/>
+            </Action>
+            <Transition kind="strong" scadeDest="recv_msg3" targetName="SSM_TR_recv_msg1_and_send_msg2_recv_msg3_1_recv_msg1_and_send_msg2"/>
+          </Fork>
+        </State>
+        <State scadeName="recv_msg3" targetName="SSM_st_recv_msg3">
+          <Last/>
+          <Fork priority="1">
+            <Condition/>
+            <Action>
+              <Last/>
+            </Action>
+            <Transition kind="strong" scadeDest="connected" targetName="SSM_TR_recv_msg3_connected_1_recv_msg3"/>
+          </Fork>
+        </State>
+        <State scadeName="connected" targetName="_4_SSM_st_connected"/>
+        <ActiveState inCtx="true" targetName="state_act"/>
+        <SelectedState inCtx="true" targetName="state_sel"/>
+        <NextState inCtx="true" mem="true" targetName="state_nxt"/>
+        <ResetActiveState inCtx="true" mem="true" targetName="reset_act"/>
+        <ResetNextState inCtx="true" mem="true" targetName="reset_nxt"/>
+        <StrongTransition inCtx="true" targetName="_fired_strong"/>
+        <WeakTransition inCtx="true" targetName="_fired"/>
+      </Automaton>
+      <Memory inCtx="true" targetName="doit" targetType="kcg_bool"/>
+      <Memory inCtx="true" targetName="partner_memo" targetType="agent"/>
+      <Memory inCtx="true" targetName="status_memo" targetType="kcg_bool"/>
+      <OutCtxType targetName="outC_bob"/>
+    </NoExpNode>
+    <NoExpNode headerFile="data_is_agent.h" scadeName="data_is_agent" targetCycleFct="data_is_agent">
+      <Input scadeName="d" scadeType="data" targetName="d" targetType="data"/>
+      <Output scadeName="b" scadeType="bool" targetName="b" targetType="kcg_bool"/>
+    </NoExpNode>
+    <NoExpNode headerFile="data_to_agent.h" scadeName="data_to_agent" targetCycleFct="data_to_agent">
+      <Input scadeName="d" scadeType="data" targetName="d" targetType="data"/>
+      <Output scadeName="a" scadeType="agent" targetName="a" targetType="agent"/>
+    </NoExpNode>
+    <NoExpNode headerFile="intruder.h" scadeName="intruder" targetCycleFct="intruder" targetInitFct="intruder_reset" targetInitializationFct="intruder_init">
+      <Input scadeName="msg_in" scadeType="msg" targetName="msg_in" targetType="msg"/>
+      <Input scadeName="action" scadeType="i_action" targetName="action" targetType="i_action"/>
+      <Output inCtx="true" scadeName="msg_out" scadeType="msg" targetName="msg_out" targetType="msg"/>
+      <Output inCtx="true" scadeName="knowNA" scadeType="bool" targetName="knowNA" targetType="kcg_bool"/>
+      <Output inCtx="true" scadeName="knowNB" scadeType="bool" targetName="knowNB" targetType="kcg_bool"/>
+      <Local inCtx="true" scadeName="look" scadeType="bool" targetName="look" targetType="kcg_bool"/>
+      <Local inCtx="true" scadeName="msg_memo" scadeType="msg" targetName="msg_memo" targetType="msg"/>
+      <Last/>
+      <Last/>
+      <ActivateWhen scadeName="foo" targetWhenType="i_action">
+        <Condition inCtx="true" targetName="foo_clock"/>
+        <Match scadeName="No_action" targetName="No_action"/>
+        <Match scadeName="Memo" targetName="Memo"/>
+        <Match scadeName="Erase" targetName="Erase"/>
+        <Match scadeName="Reuse_for_A" targetName="Reuse_for_A"/>
+        <Match scadeName="Reuse_for_B" targetName="Reuse_for_B"/>
+        <Match scadeName="Msg1_for_A" targetName="Msg1_for_A"/>
+        <Match scadeName="Msg1_for_B" targetName="Msg1_for_B"/>
+        <Match scadeName="Msg1Fake_for_A" targetName="Msg1Fake_for_A"/>
+        <Match scadeName="Msg1Fake_for_B" targetName="Msg1Fake_for_B"/>
+        <Match scadeName="Msg3_for_A" targetName="Msg3_for_A"/>
+        <Match scadeName="Msg3_for_B" targetName="Msg3_for_B"/>
+      </ActivateWhen>
+      <Memory inCtx="true" targetName="knowNA" targetType="kcg_bool"/>
+      <Memory inCtx="true" targetName="knowNB" targetType="kcg_bool"/>
+      <OutCtxType targetName="outC_intruder"/>
+    </NoExpNode>
+    <StructType targetCompFct="kcg_comp_msg" targetCopyFct="kcg_copy_msg" targetName="msg">
+      <Field scadeName="kind" scadeType="msg_kind" targetName="kind" targetType="msg_kind"/>
+      <Field scadeName="dest" scadeType="agent" targetName="dest" targetType="agent"/>
+      <Field scadeName="k" scadeType="key" targetName="k" targetType="key"/>
+      <Field scadeName="d" scadeType="array" targetName="d" targetType="array"/>
+    </StructType>
+    <ArrayType cellType="data" size="2" targetCompFct="kcg_comp_array" targetCopyFct="kcg_copy_array" targetName="array"/>
+    <PredefType scadeName="int8" targetName="kcg_int8"/>
+    <PredefType scadeName="int16" targetName="kcg_int16"/>
+    <PredefType scadeName="int32" targetName="kcg_int32"/>
+    <PredefType scadeName="int64" targetName="kcg_int64"/>
+    <PredefType scadeName="uint8" targetName="kcg_uint8"/>
+    <PredefType scadeName="uint16" targetName="kcg_uint16"/>
+    <PredefType scadeName="uint32" targetName="kcg_uint32"/>
+    <PredefType scadeName="uint64" targetName="kcg_uint64"/>
+    <PredefType scadeName="size" targetName="kcg_size"/>
+    <PredefType scadeName="float32" targetName="kcg_float32"/>
+    <PredefType scadeName="float64" targetName="kcg_float64"/>
+    <PredefType scadeName="bool" targetName="kcg_bool"/>
+    <PredefType scadeName="char" targetName="kcg_char"/>
+  </Model>

@@ -1,0 +1,643 @@
+
+const
+   #pragma ed <Constant oid="!ed/4c/4A76/33B4/5e8b61bc2558"/>
+#end
+
+Msg_null : msg = {kind : No_msg, dest : Alice, k : KeyA, d : No_data ^ 2};
+
+type
+   #pragma ed <Type oid="!ed/41/4A76/33B4/5e8b61bcc34"/>
+#end
+
+msg_kind = enum {#pragma ed <Constant oid="!ed/3d/4A76/33B4/5e8b61bc2fb1"/>
+#end
+No_msg, #pragma ed <Constant oid="!ed/3e/4A76/33B4/5e8b61bc6eff"/>
+#end
+Msg1, #pragma ed <Constant oid="!ed/3f/4A76/33B4/5e8b61bc68a2"/>
+#end
+Msg2, #pragma ed <Constant oid="!ed/40/4A76/33B4/5e8b61bc3c03"/>
+#end
+Msg3};
+   #pragma ed <Type oid="!ed/19/4A76/33B4/5e8b61bc43c2"/>
+#end
+
+agent = enum {#pragma ed <Constant oid="!ed/16/4A76/33B4/5e8b61bc3b63"/>
+#end
+Alice, #pragma ed <Constant oid="!ed/17/4A76/33B4/5e8b61bc25ac"/>
+#end
+Bob, #pragma ed <Constant oid="!ed/18/4A76/33B4/5e8b61bc27c6"/>
+#end
+Intruder};
+   #pragma ed <Type oid="!ed/1d/4A76/33B4/5e8b61bc3ea9"/>
+#end
+
+key = enum {#pragma ed <Constant oid="!ed/1a/4A76/33B4/5e8b61bc1963"/>
+#end
+KeyA, #pragma ed <Constant oid="!ed/1b/4A76/33B4/5e8b61bc2a74"/>
+#end
+KeyB, #pragma ed <Constant oid="!ed/1c/4A76/33B4/5e8b61bc5554"/>
+#end
+KeyI};
+   #pragma ed <Type oid="!ed/2b/4A76/33B4/5e8b61bc1fd2"/>
+#end
+
+data = enum {#pragma ed <Constant oid="!ed/24/4A76/33B4/5e8b61bc70b7"/>
+#end
+No_data, #pragma ed <Constant oid="!ed/25/4A76/33B4/5e8b61bc6a2d"/>
+#end
+AgentA, #pragma ed <Constant oid="!ed/26/4A76/33B4/5e8b61bcd2f"/>
+#end
+AgentB, #pragma ed <Constant oid="!ed/27/4A76/33B4/5e8b61bc59a9"/>
+#end
+AgentI, #pragma ed <Constant oid="!ed/28/4A76/33B4/5e8b61bc68a9"/>
+#end
+NonceA, #pragma ed <Constant oid="!ed/29/4A76/33B4/5e8b61bc5f8e"/>
+#end
+NonceB, #pragma ed <Constant oid="!ed/2a/4A76/33B4/5e8b61bc4ba1"/>
+#end
+NonceI};
+   #pragma ed <Type oid="!ed/4a/4A76/33B4/5e8b61bc4130"/>
+#end
+
+msg = {#pragma ed <Field oid="!ed/43/4A76/33B4/5e8b61bc14cf"/>
+#end
+kind : msg_kind, #pragma ed <Field oid="!ed/45/4A76/33B4/5e8b61bc5f15"/>
+#end
+dest : agent, #pragma ed <Field oid="!ed/47/4A76/33B4/5e8b61bc533b"/>
+#end
+k : key, #pragma ed <Field oid="!ed/49/4A76/33B4/5e8b61bc165c"/>
+#end
+d : data ^2};
+   #pragma ed <Type oid="!ed/94/4A76/33B4/5e8b61bc2344"/>
+#end
+
+i_action = enum {#pragma ed <Constant oid="!ed/89/4A76/33B4/5e8b61bc5391"/>
+#end
+No_action, #pragma ed <Constant oid="!ed/8a/4A76/33B4/5e8b61bc283c"/>
+#end
+Memo, #pragma ed <Constant oid="!ed/8b/4A76/33B4/5e8b61bc4e16"/>
+#end
+Erase, #pragma ed <Constant oid="!ed/8c/4A76/33B4/5e8b61bc58eb"/>
+#end
+Reuse_for_A, #pragma ed <Constant oid="!ed/8d/4A76/33B4/5e8b61bc4b6e"/>
+#end
+Reuse_for_B, #pragma ed <Constant oid="!ed/8e/4A76/33B4/5e8b61bc624c"/>
+#end
+Msg1_for_A, #pragma ed <Constant oid="!ed/8f/4A76/33B4/5e8b61bc1c30"/>
+#end
+Msg1_for_B, #pragma ed <Constant oid="!ed/90/4A76/33B4/5e8b61bc55fe"/>
+#end
+Msg1Fake_for_A, #pragma ed <Constant oid="!ed/91/4A76/33B4/5e8b61bc950"/>
+#end
+Msg1Fake_for_B, #pragma ed <Constant oid="!ed/92/4A76/33B4/5e8b61bc4796"/>
+#end
+Msg3_for_A, #pragma ed <Constant oid="!ed/93/4A76/33B4/5e8b61bc54bf"/>
+#end
+Msg3_for_B};
+
+node #pragma ed <Operator oid="!ed/c7/4A76/33B4/5e8b61bc442d"/>
+#end
+
+seq(
+   clock    #pragma ed    <Variable oid="!ed/c8/4A76/33B4/5e8b61bc7e0b"/>
+#end
+
+a : agent; 
+      #pragma ed    <Variable oid="!ed/ca/4A76/33B4/5e8b61bc22b9"/>
+#end
+
+Alice_partner : agent; 
+      #pragma ed    <Variable oid="!ed/cc/4A76/33B4/5e8b61bc3d79"/>
+#end
+
+intruder_action : i_action)
+returns (
+      #pragma ed    <Variable oid="!ed/ce/4A76/33B4/5e8b61bc42c6"/>
+#end
+
+msg_out : msg; 
+      #pragma ed    <Variable oid="!ed/d0/4A76/33B4/5e8b61bc5d93"/>
+#end
+
+partnerA : agent last = Alice; 
+      #pragma ed    <Variable oid="!ed/d2/4A76/33B4/5e8b61bc596e"/>
+#end
+
+partnerB : agent last = Bob; 
+      #pragma ed    <Variable oid="!ed/d4/4A76/33B4/5e8b61bce42"/>
+#end
+
+statusA : bool last = false; 
+      #pragma ed    <Variable oid="!ed/d5/4A76/33B4/5e8b61bc594d"/>
+#end
+
+statusB : bool last = false; 
+      #pragma ed    <Variable oid="!ed/d6/4A76/33B4/5e8b61bc6387"/>
+#end
+
+knowNA : bool last = false; 
+      #pragma ed    <Variable oid="!ed/d7/4A76/33B4/5e8b61bc7a7b"/>
+#end
+
+knowNB : bool last = false; 
+      #pragma ed    <Variable oid="!ed/d8/4A76/33B4/5e8b61bc6da9"/>
+#end
+
+secure : bool; 
+      #pragma ed    <Variable oid="!ed/d9/4A76/33B4/5e8b61bc212d"/>
+#end
+
+confidential : bool)
+var
+      #pragma ed    <Variable oid="!ed/da/4A76/33B4/5e8b61bc7fe9"/>
+#end
+
+msg_in : msg;
+      #pragma ed    <Variable oid="!ed/dc/4A76/33B4/5e8b61bc1e08"/>
+#end
+
+success : bool;
+let
+   #pragma ed    <WhenBlock oid="!ed/dd/4A76/33B4/5e8b61bc3992"/>
+#end
+
+   activate foo
+      #pragma ed       <WhenBlock oid="!ed/dd/4A76/33B4/5e8b61bc3992"/>
+#end
+
+       when a match 
+#pragma ed          <Match oid="!ed/de/4A76/33B4/5e8b61bc5475"/>
+#end
+         | Alice : 
+            #pragma ed             <Equation oid="!ed/e1/4A76/33B4/5e8b61bc4a08"/>
+#end
+
+            msg_out, partnerA, statusA = alice(msg_in, Alice_partner);
+#pragma ed          <Match oid="!ed/e2/4A76/33B4/5e8b61bc4456"/>
+#end
+         | Bob : 
+            #pragma ed             <Equation oid="!ed/e5/4A76/33B4/5e8b61bc722d"/>
+#end
+
+            msg_out, partnerB, statusB = bob(msg_in);
+#pragma ed          <Match oid="!ed/e6/4A76/33B4/5e8b61bc5b87"/>
+#end
+         | Intruder : 
+            #pragma ed             <Equation oid="!ed/e9/4A76/33B4/5e8b61bc22bf"/>
+#end
+
+            msg_out, knowNA, knowNB = intruder(msg_in, intruder_action);
+   returns .. ;
+   #pragma ed    <Equation oid="!ed/ea/4A76/33B4/5e8b61bc1395"/>
+#end
+
+   msg_in = fby(msg_out; 1; Msg_null);
+   #pragma ed    <Equation oid="!ed/eb/4A76/33B4/5e8b61bc6f5e"/>
+#end
+
+   success = statusA and statusB;
+   #pragma ed    <Equation oid="!ed/ec/4A76/33B4/5e8b61bc113"/>
+#end
+
+   secure =  not success or (partnerA = Bob) = (partnerB = Alice);
+   #pragma ed    <Equation oid="!ed/ed/4A76/33B4/5e8b61bccf9"/>
+#end
+
+   confidential = ( not (statusA and partnerA = Bob) or  not knowNA) and ( not (statusB and partnerB = Alice) or  not knowNB);
+tel
+
+node #pragma ed <Operator oid="!ed/4d/4A76/33B4/5e8b61bc6666"/>
+#end
+
+alice(
+      #pragma ed    <Variable oid="!ed/4e/4A76/33B4/5e8b61bc4ca7"/>
+#end
+
+msg_in : msg; 
+      #pragma ed    <Variable oid="!ed/50/4A76/33B4/5e8b61bc11e8"/>
+#end
+
+Partner_in : agent)
+returns (
+      #pragma ed    <Variable oid="!ed/52/4A76/33B4/5e8b61bc4738"/>
+#end
+
+msg_out : msg; 
+      #pragma ed    <Variable oid="!ed/54/4A76/33B4/5e8b61bc1789"/>
+#end
+
+Partner : agent; 
+      #pragma ed    <Variable oid="!ed/56/4A76/33B4/5e8b61bc2d91"/>
+#end
+
+status : bool)
+var
+      #pragma ed    <Variable oid="!ed/57/4A76/33B4/5e8b61bce89"/>
+#end
+
+doit : bool last = false;
+      #pragma ed    <Variable oid="!ed/58/4A76/33B4/5e8b61bc12f5"/>
+#end
+
+status_memo : bool last = false;
+let
+   #pragma ed    <Equation oid="!ed/59/4A76/33B4/5e8b61bc64e6"/>
+#end
+
+   Partner = fby(Partner; 1; Partner_in);
+   -- celui du 1ier cycle
+   #pragma ed    <StateMachine oid="!ed/5a/4A76/33B4/5e8b61bc11e4"/>
+#end
+
+   automaton 
+      initial       #pragma ed       <State oid="!ed/5b/4A76/33B4/5e8b61bc212b"/>
+#end
+
+state send_msg1
+      unless
+         #pragma ed          <Transition oid="!ed/5c/4A76/33B4/5e8b61bc7485"/>
+#end
+
+         if  last 'doit
+            resume recv_msg2_and_send_msg3;
+
+      let
+         #pragma ed          <Equation oid="!ed/5d/4A76/33B4/5e8b61bc6b19"/>
+#end
+
+         doit = msg_in.kind = No_msg and Partner <> Alice;
+         -- <NA,A>P
+         #pragma ed          <Equation oid="!ed/5f/4A76/33B4/5e8b61bc708e"/>
+#end
+
+         msg_out = if doit then ({kind : Msg1, dest : Partner, k : key_of_agent(Partner), d : [NonceA, AgentA]}) else (msg_in);
+      tel
+            #pragma ed       <State oid="!ed/60/4A76/33B4/5e8b61bc4551"/>
+#end
+
+state recv_msg2_and_send_msg3
+      unless
+         #pragma ed          <Transition oid="!ed/61/4A76/33B4/5e8b61bc7712"/>
+#end
+
+         if  last 'doit
+            resume connected;
+
+      let
+         #pragma ed          <Equation oid="!ed/62/4A76/33B4/5e8b61bc4820"/>
+#end
+
+         doit = msg_in.kind = Msg2 and msg_in.dest = Alice and msg_in.k = KeyA and msg_in.d[0] = NonceA;
+         -- c'est cette derniere egalite qui prouve que le message vient de P
+         -- alors msg_in.d[1] vaut NonceP
+         -- <NP>P
+         -- partner nonce
+         #pragma ed          <Equation oid="!ed/64/4A76/33B4/5e8b61bc799"/>
+#end
+
+         msg_out = if doit then ({kind : Msg3, dest : Partner, k : key_of_agent(Partner), d : [msg_in.d[1], No_data]}) else (msg_in);
+         #pragma ed          <Equation oid="!ed/65/4A76/33B4/5e8b61bc2927"/>
+#end
+
+         status_memo = if doit then (true) else ( last 'status_memo);
+      tel
+            #pragma ed       <State oid="!ed/66/4A76/33B4/5e8b61bc95f"/>
+#end
+
+state connected
+      let
+         #pragma ed          <Equation oid="!ed/67/4A76/33B4/5e8b61bc6dc2"/>
+#end
+
+         msg_out = msg_in;
+         #pragma ed          <Equation oid="!ed/68/4A76/33B4/5e8b61bc7664"/>
+#end
+
+         status_memo = true;
+      tel
+   returns .. ;
+   #pragma ed    <Equation oid="!ed/69/4A76/33B4/5e8b61bc2c4f"/>
+#end
+
+   status = status_memo;
+tel
+
+function #pragma ed <Operator oid="!ed/1e/4A76/33B4/5e8b61bc7838"/>
+#end
+
+key_of_agent(
+      #pragma ed    <Variable oid="!ed/1f/4A76/33B4/5e8b61bc1092"/>
+#end
+
+a : agent)
+returns (
+      #pragma ed    <Variable oid="!ed/21/4A76/33B4/5e8b61bc7692"/>
+#end
+
+k : key)
+let
+   #pragma ed    <Equation oid="!ed/23/4A76/33B4/5e8b61bc487"/>
+#end
+
+   k = if (a = Alice) then (KeyA) else (if (a = Bob) then (KeyB) else (KeyI));
+tel
+
+node #pragma ed <Operator oid="!ed/6a/4A76/33B4/5e8b61bc78c"/>
+#end
+
+bob(
+      #pragma ed    <Variable oid="!ed/6b/4A76/33B4/5e8b61bc7989"/>
+#end
+
+msg_in : msg)
+returns (
+      #pragma ed    <Variable oid="!ed/6d/4A76/33B4/5e8b61bc1d7d"/>
+#end
+
+msg_out : msg; 
+      #pragma ed    <Variable oid="!ed/6f/4A76/33B4/5e8b61bc39a7"/>
+#end
+
+partner : agent; 
+      #pragma ed    <Variable oid="!ed/71/4A76/33B4/5e8b61bc7d2c"/>
+#end
+
+status : bool)
+var
+      #pragma ed    <Variable oid="!ed/72/4A76/33B4/5e8b61bc28fc"/>
+#end
+
+doit : bool last = false;
+      #pragma ed    <Variable oid="!ed/73/4A76/33B4/5e8b61bc3fa2"/>
+#end
+
+partner_memo : agent last = Bob;
+      #pragma ed    <Variable oid="!ed/75/4A76/33B4/5e8b61bc5f3b"/>
+#end
+
+status_memo : bool last = false;
+let
+   #pragma ed    <StateMachine oid="!ed/76/4A76/33B4/5e8b61bc1bd0"/>
+#end
+
+   automaton 
+      initial       #pragma ed       <State oid="!ed/77/4A76/33B4/5e8b61bc6562"/>
+#end
+
+state recv_msg1_and_send_msg2
+      unless
+         #pragma ed          <Transition oid="!ed/78/4A76/33B4/5e8b61bc1bab"/>
+#end
+
+         if  last 'doit
+            resume recv_msg3;
+
+      let
+         -- <A,NA>B
+         #pragma ed          <Equation oid="!ed/7a/4A76/33B4/5e8b61bc54f9"/>
+#end
+
+         doit = msg_in.kind = Msg1 and msg_in.dest = Bob and msg_in.k = KeyB and data_is_agent(msg_in.d[1]) and msg_in.d[1] <> AgentB;
+         #pragma ed          <Equation oid="!ed/7c/4A76/33B4/5e8b61bc3255"/>
+#end
+
+         partner_memo = if doit then (data_to_agent(msg_in.d[1])) else ( last 'partner_memo);
+         -- <NA,NB>A
+         -- partner nonce
+         #pragma ed          <Equation oid="!ed/7e/4A76/33B4/5e8b61bc3ff9"/>
+#end
+
+         msg_out = if doit then ({kind : Msg2, dest : partner_memo, k : key_of_agent(partner_memo), d : [msg_in.d[0], NonceB]}) else (msg_in);
+      tel
+            #pragma ed       <State oid="!ed/7f/4A76/33B4/5e8b61bc6a3e"/>
+#end
+
+state recv_msg3
+      unless
+         #pragma ed          <Transition oid="!ed/80/4A76/33B4/5e8b61bc3d93"/>
+#end
+
+         if  last 'doit
+            resume connected;
+
+      let
+         #pragma ed          <Equation oid="!ed/81/4A76/33B4/5e8b61bc4855"/>
+#end
+
+         doit = msg_in.kind = Msg3 and msg_in.dest = Bob and msg_in.k = KeyB and msg_in.d[0] = NonceB and msg_in.d[1] = No_data;
+         #pragma ed          <Equation oid="!ed/82/4A76/33B4/5e8b61bc683e"/>
+#end
+
+         msg_out = if doit then (Msg_null) else (msg_in);
+         #pragma ed          <Equation oid="!ed/83/4A76/33B4/5e8b61bc1caa"/>
+#end
+
+         status_memo = if doit then (true) else ( last 'status_memo);
+      tel
+            #pragma ed       <State oid="!ed/84/4A76/33B4/5e8b61bc4dd"/>
+#end
+
+state connected
+      let
+         #pragma ed          <Equation oid="!ed/85/4A76/33B4/5e8b61bc360a"/>
+#end
+
+         msg_out = msg_in;
+         #pragma ed          <Equation oid="!ed/86/4A76/33B4/5e8b61bc36a4"/>
+#end
+
+         status_memo = true;
+      tel
+   returns .. ;
+   #pragma ed    <Equation oid="!ed/87/4A76/33B4/5e8b61bc4427"/>
+#end
+
+   partner = partner_memo;
+   #pragma ed    <Equation oid="!ed/88/4A76/33B4/5e8b61bc4a96"/>
+#end
+
+   status = status_memo;
+tel
+
+function #pragma ed <Operator oid="!ed/2c/4A76/33B4/5e8b61bc79f9"/>
+#end
+
+data_is_agent(
+      #pragma ed    <Variable oid="!ed/2d/4A76/33B4/5e8b61bc4784"/>
+#end
+
+d : data)
+returns (
+      #pragma ed    <Variable oid="!ed/2f/4A76/33B4/5e8b61bc4155"/>
+#end
+
+b : bool)
+let
+   #pragma ed    <Equation oid="!ed/30/4A76/33B4/5e8b61bc18f9"/>
+#end
+
+   b = d = AgentA or d = AgentB or d = AgentI;
+tel
+
+function #pragma ed <Operator oid="!ed/31/4A76/33B4/5e8b61bc6b26"/>
+#end
+
+data_to_agent(
+      #pragma ed    <Variable oid="!ed/32/4A76/33B4/5e8b61bc5bc2"/>
+#end
+
+d : data)
+returns (
+      #pragma ed    <Variable oid="!ed/34/4A76/33B4/5e8b61bc4f1"/>
+#end
+
+a : agent)
+let
+   #pragma ed    <Equation oid="!ed/36/4A76/33B4/5e8b61bc571a"/>
+#end
+
+   a = if (d = AgentA) then (Alice) else (if (d = AgentB) then (Bob) else (Intruder));
+tel
+
+node #pragma ed <Operator oid="!ed/95/4A76/33B4/5e8b61bc2be6"/>
+#end
+
+intruder(
+      #pragma ed    <Variable oid="!ed/96/4A76/33B4/5e8b61bc72dd"/>
+#end
+
+msg_in : msg; 
+      #pragma ed    <Variable oid="!ed/98/4A76/33B4/5e8b61bc4c2b"/>
+#end
+
+action : i_action)
+returns (
+      #pragma ed    <Variable oid="!ed/9a/4A76/33B4/5e8b61bc3aa6"/>
+#end
+
+msg_out : msg; 
+      #pragma ed    <Variable oid="!ed/9c/4A76/33B4/5e8b61bc4801"/>
+#end
+
+knowNA : bool last = false; 
+      #pragma ed    <Variable oid="!ed/9d/4A76/33B4/5e8b61bc37a6"/>
+#end
+
+knowNB : bool last = false)
+var
+      #pragma ed    <Variable oid="!ed/9e/4A76/33B4/5e8b61bc223c"/>
+#end
+
+look : bool;
+      #pragma ed    <Variable oid="!ed/9f/4A76/33B4/5e8b61bc3b9a"/>
+#end
+
+msg_memo : msg last = Msg_null;
+let
+   #pragma ed    <Equation oid="!ed/a1/4A76/33B4/5e8b61bc5524"/>
+#end
+
+   look = msg_in.kind <> No_msg and msg_in.k = KeyI;
+   #pragma ed    <Equation oid="!ed/a2/4A76/33B4/5e8b61bc5bf6"/>
+#end
+
+   knowNA =  last 'knowNA or look and (msg_in.d[0] = NonceA or msg_in.d[1] = NonceA);
+   #pragma ed    <Equation oid="!ed/a3/4A76/33B4/5e8b61bc2d0d"/>
+#end
+
+   knowNB =  last 'knowNB or look and (msg_in.d[0] = NonceB or msg_in.d[1] = NonceB);
+   #pragma ed    <WhenBlock oid="!ed/a4/4A76/33B4/5e8b61bc630f"/>
+#end
+
+   activate foo
+      #pragma ed       <WhenBlock oid="!ed/a4/4A76/33B4/5e8b61bc630f"/>
+#end
+
+       when action match 
+#pragma ed          <Match oid="!ed/a5/4A76/33B4/5e8b61bc7766"/>
+#end
+         | No_action : 
+            #pragma ed             <Equation oid="!ed/a7/4A76/33B4/5e8b61bc1553"/>
+#end
+
+            msg_out = msg_in;
+#pragma ed          <Match oid="!ed/a8/4A76/33B4/5e8b61bc7ab6"/>
+#end
+         | Memo : 
+            let
+               #pragma ed                <Equation oid="!ed/aa/4A76/33B4/5e8b61bc60c8"/>
+#end
+
+               msg_out = msg_in;
+               #pragma ed                <Equation oid="!ed/ab/4A76/33B4/5e8b61bc504e"/>
+#end
+
+               msg_memo = msg_in;
+            tel
+#pragma ed          <Match oid="!ed/ac/4A76/33B4/5e8b61bc60af"/>
+#end
+         | Erase : 
+            -- peut etre un No_msg
+            #pragma ed             <Equation oid="!ed/ae/4A76/33B4/5e8b61bc11aa"/>
+#end
+
+            msg_out = Msg_null;
+#pragma ed          <Match oid="!ed/af/4A76/33B4/5e8b61bc56da"/>
+#end
+         | Reuse_for_A : 
+            #pragma ed             <Equation oid="!ed/b1/4A76/33B4/5e8b61bc7515"/>
+#end
+
+            msg_out = (msg_memo with .dest = Alice);
+#pragma ed          <Match oid="!ed/b2/4A76/33B4/5e8b61bc1d8f"/>
+#end
+         | Reuse_for_B : 
+            #pragma ed             <Equation oid="!ed/b4/4A76/33B4/5e8b61bc65f7"/>
+#end
+
+            msg_out = (msg_memo with .dest = Bob);
+#pragma ed          <Match oid="!ed/b5/4A76/33B4/5e8b61bc575f"/>
+#end
+         | Msg1_for_A : 
+            #pragma ed             <Equation oid="!ed/b7/4A76/33B4/5e8b61bc3874"/>
+#end
+
+            msg_out = {kind : Msg1, dest : Alice, k : KeyA, d : [NonceI, AgentI]};
+#pragma ed          <Match oid="!ed/b8/4A76/33B4/5e8b61bc51bd"/>
+#end
+         | Msg1_for_B : 
+            #pragma ed             <Equation oid="!ed/ba/4A76/33B4/5e8b61bc1a73"/>
+#end
+
+            msg_out = {kind : Msg1, dest : Bob, k : KeyB, d : [NonceI, AgentI]};
+#pragma ed          <Match oid="!ed/bb/4A76/33B4/5e8b61bc6f32"/>
+#end
+         | Msg1Fake_for_A : 
+            #pragma ed             <Equation oid="!ed/bd/4A76/33B4/5e8b61bce1c"/>
+#end
+
+            msg_out = {kind : Msg1, dest : Alice, k : KeyA, d : [if knowNB then (NonceB) else (NonceI), AgentB]};
+#pragma ed          <Match oid="!ed/be/4A76/33B4/5e8b61bc71b8"/>
+#end
+         | Msg1Fake_for_B : 
+            #pragma ed             <Equation oid="!ed/c0/4A76/33B4/5e8b61bc4813"/>
+#end
+
+            msg_out = {kind : Msg1, dest : Bob, k : KeyB, d : [if knowNA then (NonceA) else (NonceI), AgentA]};
+#pragma ed          <Match oid="!ed/c1/4A76/33B4/5e8b61bc36a8"/>
+#end
+         | Msg3_for_A : 
+            #pragma ed             <Equation oid="!ed/c3/4A76/33B4/5e8b61bc524a"/>
+#end
+
+            msg_out = {kind : Msg3, dest : Alice, k : KeyA, d : [if knowNA then (NonceA) else (NonceI), No_data]};
+#pragma ed          <Match oid="!ed/c4/4A76/33B4/5e8b61bc5af5"/>
+#end
+         | Msg3_for_B : 
+            #pragma ed             <Equation oid="!ed/c6/4A76/33B4/5e8b61bc66b0"/>
+#end
+
+            msg_out = {kind : Msg3, dest : Bob, k : KeyB, d : [if knowNB then (NonceB) else (NonceI), No_data]};
+   returns .. ;
+tel
+

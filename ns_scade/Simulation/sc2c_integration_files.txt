@@ -1,0 +1,54 @@
+*****************************
+*** Generated KCG H/Ads files ***
+*****************************
+seq.h
+intruder.h
+bob.h
+data_to_agent.h
+data_is_agent.h
+alice.h
+key_of_agent.h
+kcg_types.h
+kcg_consts.h
+kcg_sensors.h
+
+*****************************
+*** Generated KCG C/Adb files ***
+*****************************
+seq.c
+intruder.c
+bob.c
+data_to_agent.c
+data_is_agent.c
+alice.c
+key_of_agent.c
+kcg_types.c
+kcg_consts.c
+
+*****************************
+*** External C Files ***
+*****************************
+ns_scade_type.c
+$(SCADE)\lib\C\SmuPredefConv.c
+$(SCADE)\lib\C\SmuConfig.c
+$(SCADE)\lib\C\SmuTypes.c
+$(SCADE)\lib\C\SmuLib.c
+$(SCADE)\lib\C\SmuVTable.c
+ns_scade_mapping.c
+
+*****************************
+*** Generated SC2C Files ***
+*****************************
+user_macros.h
+kcg_imported_types.h
+
+*****************************
+*** Include Directories ***
+*****************************
+.
+$(SCADE)
+$(SCADE)\include
+$(SCADE)\include\C
+$(SCADE)\include\Ada
+$(SCADE)\lib\Ada
+

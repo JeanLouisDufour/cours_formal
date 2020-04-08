@@ -1,0 +1,695 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!--$********** SCADE Suite KCG 32-bit 6.6 (build i19) ***********
+** Command: kcg66.exe -config E:/github/cours_formal/ns_scade/Simulation/config.txt
+** Generation date: 2020-04-06T19:07:09
+*************************************************************$-->
+<mapping>
+  <config>
+    <option name="use_types" value="#off#"/>
+    <option name="imported_root_package" value="#off#"/>
+    <option name="root_package" value="#off#"/>
+    <option name="xml_basename" value="kcg_xml_filter_out.scade"/>
+    <option name="state_vector" value="#off#"/>
+    <option name="static" value="#off#"/>
+    <option name="separate_io_all" value="#off#"/>
+    <option name="no_separate_io" value="#off#"/>
+    <option name="separate_io" value="#off#"/>
+    <option name="warn_error" value="#off#"/>
+    <option name="short_circuit" value="#off#"/>
+    <option name="wrap_c_ops" value="#off#"/>
+    <option name="input_file" value="E:/github/cours_formal/ns_scade/Simulation/scade_model_without_unused.scade"/>
+    <option name="probes" value="#on#"/>
+    <option name="no_observe" value="#off#"/>
+    <option name="observe" value="#off#"/>
+    <option name="debug" value="#on#"/>
+    <option name="user_config" value="./user_macros.h"/>
+    <option name="input_threshold" value="#off#"/>
+    <option name="header" value="#off#"/>
+    <option name="significance_length" value="31"/>
+    <option name="name_length" value="200"/>
+    <option name="globals_prefix" value="#off#"/>
+    <option name="keep_asserts" value="#off#"/>
+    <option name="global_root_context" value="#off#"/>
+    <option name="expall" value="#off#"/>
+    <option name="noexp" value="#off#"/>
+    <option name="exp" value="#off#"/>
+    <option name="target_dir" value="E:/github/cours_formal/ns_scade/Simulation"/>
+    <option name="target" value="C"/>
+    <option name="root" value="seq"/>
+    <option name="auth" value="#off#"/>
+  </config>
+  <model>
+    <struct id="1">
+      <field id="2" name="kind" type="21"/>
+      <field id="3" name="dest" type="26"/>
+      <field id="4" name="k" type="30"/>
+      <field id="5" name="d" type="6"/>
+    </struct>
+    <array id="6" baseType="34" size="2"/>
+    <predefType id="7" name="bool"/>
+    <predefType id="8" name="char"/>
+    <predefType id="9" name="int8"/>
+    <predefType id="10" name="int16"/>
+    <predefType id="11" name="int32"/>
+    <predefType id="12" name="int64"/>
+    <predefType id="13" name="uint8"/>
+    <predefType id="14" name="uint16"/>
+    <predefType id="15" name="uint32"/>
+    <predefType id="16" name="uint64"/>
+    <predefType id="17" name="float32"/>
+    <predefType id="18" name="float64"/>
+    <predefType id="19" name="size"/>
+    <constant id="20" name="Msg_null" imported="false" type="42"/>
+    <enum id="21" name="msg_kind">
+      <value id="22" name="No_msg" default="false"/>
+      <value id="23" name="Msg1" default="false"/>
+      <value id="24" name="Msg2" default="false"/>
+      <value id="25" name="Msg3" default="false"/>
+    </enum>
+    <enum id="26" name="agent">
+      <value id="27" name="Alice" default="false"/>
+      <value id="28" name="Bob" default="false"/>
+      <value id="29" name="Intruder" default="false"/>
+    </enum>
+    <enum id="30" name="key">
+      <value id="31" name="KeyA" default="false"/>
+      <value id="32" name="KeyB" default="false"/>
+      <value id="33" name="KeyI" default="false"/>
+    </enum>
+    <enum id="34" name="data">
+      <value id="35" name="No_data" default="false"/>
+      <value id="36" name="AgentA" default="false"/>
+      <value id="37" name="AgentB" default="false"/>
+      <value id="38" name="AgentI" default="false"/>
+      <value id="39" name="NonceA" default="false"/>
+      <value id="40" name="NonceB" default="false"/>
+      <value id="41" name="NonceI" default="false"/>
+    </enum>
+    <type id="42" name="msg" imported="false" type="1"/>
+    <enum id="43" name="i_action">
+      <value id="44" name="No_action" default="false"/>
+      <value id="45" name="Memo" default="false"/>
+      <value id="46" name="Erase" default="false"/>
+      <value id="47" name="Reuse_for_A" default="false"/>
+      <value id="48" name="Reuse_for_B" default="false"/>
+      <value id="49" name="Msg1_for_A" default="false"/>
+      <value id="50" name="Msg1_for_B" default="false"/>
+      <value id="51" name="Msg1Fake_for_A" default="false"/>
+      <value id="52" name="Msg1Fake_for_B" default="false"/>
+      <value id="53" name="Msg3_for_A" default="false"/>
+      <value id="54" name="Msg3_for_B" default="false"/>
+    </enum>
+    <operator id="55" name="seq" imported="false" root="true" expanded="false">
+      <input id="56" name="a" clock="true" type="26"/>
+      <input id="57" name="Alice_partner" clock="false" type="26"/>
+      <input id="58" name="intruder_action" clock="false" type="43"/>
+      <output id="59" name="msg_out" clock="false" type="42"/>
+      <output id="60" name="partnerA" clock="false" type="26"/>
+      <output id="61" name="partnerB" clock="false" type="26"/>
+      <output id="62" name="statusA" clock="false" type="7"/>
+      <output id="63" name="statusB" clock="false" type="7"/>
+      <output id="64" name="knowNA" clock="false" type="7"/>
+      <output id="65" name="knowNB" clock="false" type="7"/>
+      <output id="66" name="secure" clock="false" type="7"/>
+      <output id="67" name="confidential" clock="false" type="7"/>
+      <local id="68" name="msg_in" clock="false" type="42"/>
+      <local id="69" name="success" clock="false" type="7"/>
+      <block id="70" name="foo" type="26">
+        <branch id="71" name="Alice" value="27">
+          <instance id="72" op="78" expanded="false"/>
+        </branch>
+        <branch id="73" name="Bob" value="28">
+          <instance id="74" op="103" expanded="false"/>
+        </branch>
+        <branch id="75" name="Intruder" value="29">
+          <instance id="76" op="132" expanded="false"/>
+        </branch>
+      </block>
+      <fby id="77"/>
+    </operator>
+    <operator id="78" name="alice" imported="false" root="false" expanded="false">
+      <input id="79" name="msg_in" clock="false" type="42"/>
+      <input id="80" name="Partner_in" clock="false" type="26"/>
+      <output id="81" name="msg_out" clock="false" type="42"/>
+      <output id="82" name="Partner" clock="false" type="26"/>
+      <output id="83" name="status" clock="false" type="7"/>
+      <local id="84" name="doit" clock="false" type="7"/>
+      <local id="85" name="status_memo" clock="false" type="7"/>
+      <fby id="86"/>
+      <automaton id="87">
+        <state id="88" name="send_msg1" initial="true" final="false" default="false">
+          <instance id="89" op="100" expanded="false"/>
+          <fork id="90" name="1" kind="strong">
+            <last id="91"/>
+            <transition id="92" dest="93"/>
+          </fork>
+        </state>
+        <state id="93" name="recv_msg2_and_send_msg3" initial="false" final="false" default="false">
+          <instance id="94" op="100" expanded="false"/>
+          <last id="95"/>
+          <fork id="96" name="1" kind="strong">
+            <last id="97"/>
+            <transition id="98" dest="99"/>
+          </fork>
+        </state>
+        <state id="99" name="connected" initial="false" final="false" default="false"/>
+      </automaton>
+    </operator>
+    <operator id="100" name="key_of_agent" imported="false" root="false" expanded="false">
+      <input id="101" name="a" clock="false" type="26"/>
+      <output id="102" name="k" clock="false" type="30"/>
+    </operator>
+    <operator id="103" name="bob" imported="false" root="false" expanded="false">
+      <input id="104" name="msg_in" clock="false" type="42"/>
+      <output id="105" name="msg_out" clock="false" type="42"/>
+      <output id="106" name="partner" clock="false" type="26"/>
+      <output id="107" name="status" clock="false" type="7"/>
+      <local id="108" name="doit" clock="false" type="7"/>
+      <local id="109" name="partner_memo" clock="false" type="26"/>
+      <local id="110" name="status_memo" clock="false" type="7"/>
+      <automaton id="111">
+        <state id="112" name="recv_msg1_and_send_msg2" initial="true" final="false" default="false">
+          <instance id="113" op="126" expanded="false"/>
+          <last id="114"/>
+          <instance id="115" op="129" expanded="false"/>
+          <instance id="116" op="100" expanded="false"/>
+          <fork id="117" name="1" kind="strong">
+            <last id="118"/>
+            <transition id="119" dest="120"/>
+          </fork>
+        </state>
+        <state id="120" name="recv_msg3" initial="false" final="false" default="false">
+          <last id="121"/>
+          <fork id="122" name="1" kind="strong">
+            <last id="123"/>
+            <transition id="124" dest="125"/>
+          </fork>
+        </state>
+        <state id="125" name="connected" initial="false" final="false" default="false"/>
+      </automaton>
+    </operator>
+    <operator id="126" name="data_is_agent" imported="false" root="false" expanded="false">
+      <input id="127" name="d" clock="false" type="34"/>
+      <output id="128" name="b" clock="false" type="7"/>
+    </operator>
+    <operator id="129" name="data_to_agent" imported="false" root="false" expanded="false">
+      <input id="130" name="d" clock="false" type="34"/>
+      <output id="131" name="a" clock="false" type="26"/>
+    </operator>
+    <operator id="132" name="intruder" imported="false" root="false" expanded="false">
+      <input id="133" name="msg_in" clock="false" type="42"/>
+      <input id="134" name="action" clock="false" type="43"/>
+      <output id="135" name="msg_out" clock="false" type="42"/>
+      <output id="136" name="knowNA" clock="false" type="7"/>
+      <output id="137" name="knowNB" clock="false" type="7"/>
+      <local id="138" name="look" clock="false" type="7"/>
+      <local id="139" name="msg_memo" clock="false" type="42"/>
+      <last id="140"/>
+      <last id="141"/>
+      <block id="142" name="foo" type="43">
+        <branch id="143" name="No_action" value="44"/>
+        <branch id="144" name="Memo" value="45"/>
+        <branch id="145" name="Erase" value="46"/>
+        <branch id="146" name="Reuse_for_A" value="47"/>
+        <branch id="147" name="Reuse_for_B" value="48"/>
+        <branch id="148" name="Msg1_for_A" value="49"/>
+        <branch id="149" name="Msg1_for_B" value="50"/>
+        <branch id="150" name="Msg1Fake_for_A" value="51"/>
+        <branch id="151" name="Msg1Fake_for_B" value="52"/>
+        <branch id="152" name="Msg3_for_A" value="53"/>
+        <branch id="153" name="Msg3_for_B" value="54"/>
+      </block>
+    </operator>
+  </model>
+  <generated>
+    <c>
+      <file id="154" name="seq.h">
+        <function id="155" name="seq_init">
+          <parameter id="156" name="outC" type="162" pointer="true"/>
+        </function>
+        <function id="157" name="seq_reset">
+          <parameter id="158" name="outC" type="162" pointer="true"/>
+        </function>
+        <function id="159" name="seq">
+          <parameter id="160" name="inC" type="178" pointer="true"/>
+          <parameter id="161" name="outC" type="162" pointer="true"/>
+        </function>
+        <struct id="162" name="outC_seq">
+          <field id="163" name="msg_out" type="263" pointer="false"/>
+          <field id="164" name="partnerA" type="290" pointer="false"/>
+          <field id="165" name="partnerB" type="290" pointer="false"/>
+          <field id="166" name="statusA" type="352" pointer="false"/>
+          <field id="167" name="statusB" type="352" pointer="false"/>
+          <field id="168" name="knowNA" type="352" pointer="false"/>
+          <field id="169" name="knowNB" type="352" pointer="false"/>
+          <field id="170" name="secure" type="352" pointer="false"/>
+          <field id="171" name="confidential" type="352" pointer="false"/>
+          <field id="172" name="init" type="352" pointer="false"/>
+          <field id="173" name="Context_alice" type="235" pointer="false"/>
+          <field id="174" name="Context_bob" type="206" pointer="false"/>
+          <field id="175" name="Context_intruder" type="191" pointer="false"/>
+          <field id="176" name="msg_in" type="263" pointer="false"/>
+          <field id="177" name="success" type="352" pointer="false"/>
+        </struct>
+        <struct id="178" name="inC_seq">
+          <field id="179" name="a" type="290" pointer="false"/>
+          <field id="180" name="Alice_partner" type="290" pointer="false"/>
+          <field id="181" name="intruder_action" type="306" pointer="false"/>
+        </struct>
+      </file>
+      <file id="182" name="intruder.h">
+        <function id="183" name="intruder_init">
+          <parameter id="184" name="outC" type="191" pointer="true"/>
+        </function>
+        <function id="185" name="intruder_reset">
+          <parameter id="186" name="outC" type="191" pointer="true"/>
+        </function>
+        <function id="187" name="intruder">
+          <parameter id="188" name="msg_in" type="263" pointer="true"/>
+          <parameter id="189" name="action" type="306" pointer="false"/>
+          <parameter id="190" name="outC" type="191" pointer="true"/>
+        </function>
+        <struct id="191" name="outC_intruder">
+          <field id="192" name="msg_out" type="263" pointer="false"/>
+          <field id="193" name="knowNA" type="352" pointer="false"/>
+          <field id="194" name="knowNB" type="352" pointer="false"/>
+          <field id="195" name="msg_memo" type="263" pointer="false"/>
+          <field id="196" name="foo_clock" type="306" pointer="false"/>
+          <field id="197" name="look" type="352" pointer="false"/>
+        </struct>
+      </file>
+      <file id="198" name="bob.h">
+        <function id="199" name="bob_init">
+          <parameter id="200" name="outC" type="206" pointer="true"/>
+        </function>
+        <function id="201" name="bob_reset">
+          <parameter id="202" name="outC" type="206" pointer="true"/>
+        </function>
+        <function id="203" name="bob">
+          <parameter id="204" name="msg_in" type="263" pointer="true"/>
+          <parameter id="205" name="outC" type="206" pointer="true"/>
+        </function>
+        <struct id="206" name="outC_bob">
+          <field id="207" name="msg_out" type="263" pointer="false"/>
+          <field id="208" name="partner" type="290" pointer="false"/>
+          <field id="209" name="status" type="352" pointer="false"/>
+          <field id="210" name="state_nxt" type="269" pointer="false"/>
+          <field id="211" name="reset_act" type="352" pointer="false"/>
+          <field id="212" name="reset_nxt" type="352" pointer="false"/>
+          <field id="213" name="doit" type="352" pointer="false"/>
+          <field id="214" name="partner_memo" type="290" pointer="false"/>
+          <field id="215" name="status_memo" type="352" pointer="false"/>
+          <field id="216" name="state_act" type="269" pointer="false"/>
+          <field id="217" name="state_sel" type="269" pointer="false"/>
+          <field id="218" name="_fired_strong" type="273" pointer="false"/>
+          <field id="219" name="_fired" type="273" pointer="false"/>
+        </struct>
+      </file>
+      <file id="220" name="data_to_agent.h">
+        <function id="221" name="data_to_agent" returnType="290">
+          <parameter id="222" name="d" type="298" pointer="false"/>
+        </function>
+      </file>
+      <file id="223" name="data_is_agent.h">
+        <function id="224" name="data_is_agent" returnType="352">
+          <parameter id="225" name="d" type="298" pointer="false"/>
+        </function>
+      </file>
+      <file id="226" name="alice.h">
+        <function id="227" name="alice_init">
+          <parameter id="228" name="outC" type="235" pointer="true"/>
+        </function>
+        <function id="229" name="alice_reset">
+          <parameter id="230" name="outC" type="235" pointer="true"/>
+        </function>
+        <function id="231" name="alice">
+          <parameter id="232" name="msg_in" type="263" pointer="true"/>
+          <parameter id="233" name="Partner_in" type="290" pointer="false"/>
+          <parameter id="234" name="outC" type="235" pointer="true"/>
+        </function>
+        <struct id="235" name="outC_alice">
+          <field id="236" name="msg_out" type="263" pointer="false"/>
+          <field id="237" name="Partner" type="290" pointer="false"/>
+          <field id="238" name="status" type="352" pointer="false"/>
+          <field id="239" name="init" type="352" pointer="false"/>
+          <field id="240" name="state_nxt" type="277" pointer="false"/>
+          <field id="241" name="reset_act" type="352" pointer="false"/>
+          <field id="242" name="reset_nxt" type="352" pointer="false"/>
+          <field id="243" name="doit" type="352" pointer="false"/>
+          <field id="244" name="status_memo" type="352" pointer="false"/>
+          <field id="245" name="state_act" type="277" pointer="false"/>
+          <field id="246" name="state_sel" type="277" pointer="false"/>
+          <field id="247" name="_fired_strong" type="281" pointer="false"/>
+          <field id="248" name="_fired" type="281" pointer="false"/>
+        </struct>
+      </file>
+      <file id="249" name="key_of_agent.h">
+        <function id="250" name="key_of_agent" returnType="294">
+          <parameter id="251" name="a" type="290" pointer="false"/>
+        </function>
+      </file>
+      <file id="252" name="kcg_types.h">
+        <ifdef id="253" name="kcg_use_array">
+          <function id="254" name="kcg_comp_array" returnType="352">
+            <parameter id="259" name="kcg_c1" type="268" pointer="true"/>
+            <parameter id="260" name="kcg_c2" type="268" pointer="true"/>
+          </function>
+        </ifdef>
+        <ifdef id="257" name="kcg_use_msg">
+          <function id="258" name="kcg_comp_msg" returnType="352">
+            <parameter id="259" name="kcg_c1" type="263" pointer="true"/>
+            <parameter id="260" name="kcg_c2" type="263" pointer="true"/>
+          </function>
+        </ifdef>
+        <macro id="261" name="kcg_copy_array"/>
+        <macro id="262" name="kcg_copy_msg"/>
+        <struct id="263" name="msg" tagName="kcg_tag_msg">
+          <field id="264" name="kind" type="285" pointer="false"/>
+          <field id="265" name="dest" type="290" pointer="false"/>
+          <field id="266" name="k" type="294" pointer="false"/>
+          <field id="267" name="d" type="268" pointer="false"/>
+        </struct>
+        <array id="268" name="array" baseType="298" size="2"/>
+        <enum id="269" name="SSM_ST" tagName="kcg_tag_SSM_ST">
+          <value id="270" name="SSM_st_recv_msg1_and_send_msg2"/>
+          <value id="271" name="SSM_st_recv_msg3"/>
+          <value id="272" name="_4_SSM_st_connected"/>
+        </enum>
+        <enum id="273" name="SSM_TR" tagName="kcg_tag_SSM_TR">
+          <value id="274" name="_5_SSM_TR_no_trans_"/>
+          <value id="275" name="SSM_TR_recv_msg1_and_send_msg2_recv_msg3_1_recv_msg1_and_send_msg2"/>
+          <value id="276" name="SSM_TR_recv_msg3_connected_1_recv_msg3"/>
+        </enum>
+        <enum id="277" name="_2_SSM_ST" tagName="kcg_tag__2_SSM_ST">
+          <value id="278" name="SSM_st_send_msg1"/>
+          <value id="279" name="SSM_st_recv_msg2_and_send_msg3"/>
+          <value id="280" name="SSM_st_connected"/>
+        </enum>
+        <enum id="281" name="_3_SSM_TR" tagName="kcg_tag__3_SSM_TR">
+          <value id="282" name="SSM_TR_no_trans_"/>
+          <value id="283" name="SSM_TR_send_msg1_recv_msg2_and_send_msg3_1_send_msg1"/>
+          <value id="284" name="SSM_TR_recv_msg2_and_send_msg3_connected_1_recv_msg2_and_send_msg3"/>
+        </enum>
+        <enum id="285" name="msg_kind" tagName="kcg_tag_msg_kind">
+          <value id="286" name="No_msg"/>
+          <value id="287" name="Msg1"/>
+          <value id="288" name="Msg2"/>
+          <value id="289" name="Msg3"/>
+        </enum>
+        <enum id="290" name="agent" tagName="kcg_tag_agent">
+          <value id="291" name="Alice"/>
+          <value id="292" name="Bob"/>
+          <value id="293" name="Intruder"/>
+        </enum>
+        <enum id="294" name="key" tagName="kcg_tag_key">
+          <value id="295" name="KeyA"/>
+          <value id="296" name="KeyB"/>
+          <value id="297" name="KeyI"/>
+        </enum>
+        <enum id="298" name="data" tagName="kcg_tag_data">
+          <value id="299" name="No_data"/>
+          <value id="300" name="AgentA"/>
+          <value id="301" name="AgentB"/>
+          <value id="302" name="AgentI"/>
+          <value id="303" name="NonceA"/>
+          <value id="304" name="NonceB"/>
+          <value id="305" name="NonceI"/>
+        </enum>
+        <enum id="306" name="i_action" tagName="kcg_tag_i_action">
+          <value id="307" name="No_action"/>
+          <value id="308" name="Memo"/>
+          <value id="309" name="Erase"/>
+          <value id="310" name="Reuse_for_A"/>
+          <value id="311" name="Reuse_for_B"/>
+          <value id="312" name="Msg1_for_A"/>
+          <value id="313" name="Msg1_for_B"/>
+          <value id="314" name="Msg1Fake_for_A"/>
+          <value id="315" name="Msg1Fake_for_B"/>
+          <value id="316" name="Msg3_for_A"/>
+          <value id="317" name="Msg3_for_B"/>
+        </enum>
+        <macro id="318" name="kcg_assign_array"/>
+        <macro id="319" name="kcg_assign_struct"/>
+        <macro id="320" name="kcg_lnot_uint8"/>
+        <macro id="321" name="kcg_lnot_uint16"/>
+        <macro id="322" name="kcg_lnot_uint32"/>
+        <macro id="323" name="kcg_lnot_uint64"/>
+        <macro id="324" name="kcg_lsl_uint8"/>
+        <macro id="325" name="kcg_lsl_uint16"/>
+        <macro id="326" name="kcg_lsl_uint32"/>
+        <macro id="327" name="kcg_lsl_uint64"/>
+        <macro id="328" name="kcg_true"/>
+        <macro id="329" name="kcg_false"/>
+        <macro id="330" name="kcg_lit_int8"/>
+        <macro id="331" name="kcg_lit_int16"/>
+        <macro id="332" name="kcg_lit_int32"/>
+        <macro id="333" name="kcg_lit_int64"/>
+        <macro id="334" name="kcg_lit_uint8"/>
+        <macro id="335" name="kcg_lit_uint16"/>
+        <macro id="336" name="kcg_lit_uint32"/>
+        <macro id="337" name="kcg_lit_uint64"/>
+        <macro id="338" name="kcg_lit_size"/>
+        <macro id="339" name="kcg_lit_float64"/>
+        <macro id="340" name="kcg_lit_float32"/>
+        <predefType id="341" name="kcg_int8"/>
+        <predefType id="342" name="kcg_int16"/>
+        <predefType id="343" name="kcg_int32"/>
+        <predefType id="344" name="kcg_int64"/>
+        <predefType id="345" name="kcg_uint8"/>
+        <predefType id="346" name="kcg_uint16"/>
+        <predefType id="347" name="kcg_uint32"/>
+        <predefType id="348" name="kcg_uint64"/>
+        <predefType id="349" name="kcg_size"/>
+        <predefType id="350" name="kcg_float64"/>
+        <predefType id="351" name="kcg_float32"/>
+        <predefType id="352" name="kcg_bool"/>
+        <predefType id="353" name="kcg_char"/>
+        <macro id="354" name="KCG_MAPW_CPY"/>
+      </file>
+      <file id="355" name="kcg_consts.h">
+        <constant id="356" name="Msg_null" type="263" pointer="false"/>
+      </file>
+      <file id="357" name="kcg_sensors.h"/>
+    </c>
+    <map srcId="350" dstId="339" role="wrapped-lit"/>
+    <map srcId="351" dstId="340" role="wrapped-lit"/>
+    <map srcId="349" dstId="338" role="wrapped-lit"/>
+    <map srcId="348" dstId="337" role="wrapped-lit"/>
+    <map srcId="348" dstId="323" role="wrapped-lnot"/>
+    <map srcId="348" dstId="327" role="wrapped-lsl"/>
+    <map srcId="347" dstId="336" role="wrapped-lit"/>
+    <map srcId="347" dstId="322" role="wrapped-lnot"/>
+    <map srcId="347" dstId="326" role="wrapped-lsl"/>
+    <map srcId="346" dstId="335" role="wrapped-lit"/>
+    <map srcId="346" dstId="321" role="wrapped-lnot"/>
+    <map srcId="346" dstId="325" role="wrapped-lsl"/>
+    <map srcId="345" dstId="334" role="wrapped-lit"/>
+    <map srcId="345" dstId="320" role="wrapped-lnot"/>
+    <map srcId="345" dstId="324" role="wrapped-lsl"/>
+    <map srcId="344" dstId="333" role="wrapped-lit"/>
+    <map srcId="343" dstId="332" role="wrapped-lit"/>
+    <map srcId="342" dstId="331" role="wrapped-lit"/>
+    <map srcId="341" dstId="330" role="wrapped-lit"/>
+    <map srcId="263" dstId="257" role="type-use"/>
+    <map srcId="263" dstId="258" role="type-comparison"/>
+    <map srcId="263" dstId="262" role="type-copy"/>
+    <map srcId="268" dstId="253" role="type-use"/>
+    <map srcId="268" dstId="254" role="type-comparison"/>
+    <map srcId="268" dstId="261" role="type-copy"/>
+    <map srcId="175" dstId="179" role="clock"/>
+    <map srcId="175" dstId="293" role="clock-value"/>
+    <map srcId="174" dstId="179" role="clock"/>
+    <map srcId="174" dstId="292" role="clock-value"/>
+    <map srcId="173" dstId="179" role="clock"/>
+    <map srcId="173" dstId="291" role="clock-value"/>
+  </generated>
+  <map modelId="44" generatedId="307"/>
+  <map modelId="45" generatedId="308"/>
+  <map modelId="46" generatedId="309"/>
+  <map modelId="47" generatedId="310"/>
+  <map modelId="48" generatedId="311"/>
+  <map modelId="49" generatedId="312"/>
+  <map modelId="50" generatedId="313"/>
+  <map modelId="51" generatedId="314"/>
+  <map modelId="52" generatedId="315"/>
+  <map modelId="53" generatedId="316"/>
+  <map modelId="41" generatedId="305"/>
+  <map modelId="54" generatedId="317"/>
+  <map modelId="119" generatedId="275"/>
+  <map modelId="124" generatedId="276"/>
+  <map modelId="111" generatedId="274" role="autom-no-trans-enum"/>
+  <map modelId="40" generatedId="304"/>
+  <map modelId="112" generatedId="270"/>
+  <map modelId="120" generatedId="271"/>
+  <map modelId="125" generatedId="272"/>
+  <map modelId="29" generatedId="293"/>
+  <map modelId="37" generatedId="301"/>
+  <map modelId="38" generatedId="302"/>
+  <map modelId="23" generatedId="287"/>
+  <map modelId="36" generatedId="300"/>
+  <map modelId="25" generatedId="289"/>
+  <map modelId="92" generatedId="283"/>
+  <map modelId="98" generatedId="284"/>
+  <map modelId="87" generatedId="282" role="autom-no-trans-enum"/>
+  <map modelId="24" generatedId="288"/>
+  <map modelId="39" generatedId="303"/>
+  <map modelId="88" generatedId="278"/>
+  <map modelId="93" generatedId="279"/>
+  <map modelId="99" generatedId="280"/>
+  <map modelId="33" generatedId="297"/>
+  <map modelId="32" generatedId="296"/>
+  <map modelId="28" generatedId="292"/>
+  <map modelId="55" generatedId="156" role="context-parameter"/>
+  <map modelId="55" generatedId="155" role="init-method"/>
+  <map modelId="55" generatedId="158" role="context-parameter"/>
+  <map modelId="55" generatedId="157" role="reset-method"/>
+  <map modelId="55" generatedId="160" role="input-struct-parameter"/>
+  <map modelId="58" generatedId="181"/>
+  <map modelId="57" generatedId="180"/>
+  <map modelId="56" generatedId="179"/>
+  <map modelId="70" generatedId="179" role="condition"/>
+  <map modelId="55" generatedId="178" role="input-struct-type"/>
+  <map modelId="55" generatedId="161" role="context-parameter"/>
+  <map modelId="69" generatedId="177"/>
+  <map modelId="68" generatedId="176"/>
+  <map modelId="76" generatedId="175"/>
+  <map modelId="74" generatedId="174"/>
+  <map modelId="72" generatedId="173"/>
+  <map modelId="77" generatedId="172" role="init"/>
+  <map modelId="67" generatedId="171"/>
+  <map modelId="66" generatedId="170"/>
+  <map modelId="65" generatedId="169"/>
+  <map modelId="64" generatedId="168"/>
+  <map modelId="63" generatedId="167"/>
+  <map modelId="62" generatedId="166"/>
+  <map modelId="61" generatedId="165"/>
+  <map modelId="60" generatedId="164"/>
+  <map modelId="59" generatedId="163"/>
+  <map modelId="77" generatedId="163" role="memory"/>
+  <map modelId="55" generatedId="162" role="context-type"/>
+  <map modelId="55" generatedId="154" role="interface-file"/>
+  <map modelId="55" generatedId="159" role="cycle-method"/>
+  <map modelId="132" generatedId="184" role="context-parameter"/>
+  <map modelId="132" generatedId="183" role="init-method"/>
+  <map modelId="132" generatedId="186" role="context-parameter"/>
+  <map modelId="132" generatedId="185" role="reset-method"/>
+  <map modelId="134" generatedId="189"/>
+  <map modelId="133" generatedId="188"/>
+  <map modelId="132" generatedId="190" role="context-parameter"/>
+  <map modelId="138" generatedId="197"/>
+  <map modelId="142" generatedId="196" role="condition"/>
+  <map modelId="139" generatedId="195"/>
+  <map modelId="137" generatedId="194"/>
+  <map modelId="141" generatedId="194" role="memory"/>
+  <map modelId="136" generatedId="193"/>
+  <map modelId="140" generatedId="193" role="memory"/>
+  <map modelId="135" generatedId="192"/>
+  <map modelId="132" generatedId="191" role="context-type"/>
+  <map modelId="132" generatedId="182" role="interface-file"/>
+  <map modelId="132" generatedId="187" role="cycle-method"/>
+  <map modelId="103" generatedId="200" role="context-parameter"/>
+  <map modelId="103" generatedId="199" role="init-method"/>
+  <map modelId="103" generatedId="202" role="context-parameter"/>
+  <map modelId="103" generatedId="201" role="reset-method"/>
+  <map modelId="104" generatedId="204"/>
+  <map modelId="103" generatedId="205" role="context-parameter"/>
+  <map modelId="111" generatedId="219" role="autom-weak-transition"/>
+  <map modelId="111" generatedId="218" role="autom-strong-transition"/>
+  <map modelId="111" generatedId="217" role="autom-selected-state"/>
+  <map modelId="111" generatedId="216" role="autom-active-state"/>
+  <map modelId="110" generatedId="215"/>
+  <map modelId="111" generatedId="215" role="memory"/>
+  <map modelId="121" generatedId="215" role="memory"/>
+  <map modelId="109" generatedId="214"/>
+  <map modelId="111" generatedId="214" role="memory"/>
+  <map modelId="114" generatedId="214" role="memory"/>
+  <map modelId="108" generatedId="213"/>
+  <map modelId="111" generatedId="213" role="memory"/>
+  <map modelId="118" generatedId="213" role="memory"/>
+  <map modelId="123" generatedId="213" role="memory"/>
+  <map modelId="111" generatedId="212" role="autom-next-reset"/>
+  <map modelId="111" generatedId="211" role="autom-active-reset"/>
+  <map modelId="111" generatedId="210" role="autom-next-state"/>
+  <map modelId="107" generatedId="209"/>
+  <map modelId="106" generatedId="208"/>
+  <map modelId="105" generatedId="207"/>
+  <map modelId="103" generatedId="206" role="context-type"/>
+  <map modelId="103" generatedId="198" role="interface-file"/>
+  <map modelId="103" generatedId="203" role="cycle-method"/>
+  <map modelId="130" generatedId="222"/>
+  <map modelId="129" generatedId="220" role="interface-file"/>
+  <map modelId="129" generatedId="221" role="cycle-method"/>
+  <map modelId="127" generatedId="225"/>
+  <map modelId="126" generatedId="223" role="interface-file"/>
+  <map modelId="126" generatedId="224" role="cycle-method"/>
+  <map modelId="78" generatedId="228" role="context-parameter"/>
+  <map modelId="78" generatedId="227" role="init-method"/>
+  <map modelId="78" generatedId="230" role="context-parameter"/>
+  <map modelId="78" generatedId="229" role="reset-method"/>
+  <map modelId="80" generatedId="233"/>
+  <map modelId="79" generatedId="232"/>
+  <map modelId="78" generatedId="234" role="context-parameter"/>
+  <map modelId="87" generatedId="248" role="autom-weak-transition"/>
+  <map modelId="87" generatedId="247" role="autom-strong-transition"/>
+  <map modelId="87" generatedId="246" role="autom-selected-state"/>
+  <map modelId="87" generatedId="245" role="autom-active-state"/>
+  <map modelId="85" generatedId="244"/>
+  <map modelId="87" generatedId="244" role="memory"/>
+  <map modelId="95" generatedId="244" role="memory"/>
+  <map modelId="84" generatedId="243"/>
+  <map modelId="87" generatedId="243" role="memory"/>
+  <map modelId="91" generatedId="243" role="memory"/>
+  <map modelId="97" generatedId="243" role="memory"/>
+  <map modelId="87" generatedId="242" role="autom-next-reset"/>
+  <map modelId="87" generatedId="241" role="autom-active-reset"/>
+  <map modelId="87" generatedId="240" role="autom-next-state"/>
+  <map modelId="86" generatedId="239" role="init"/>
+  <map modelId="83" generatedId="238"/>
+  <map modelId="82" generatedId="237"/>
+  <map modelId="86" generatedId="237" role="memory"/>
+  <map modelId="81" generatedId="236"/>
+  <map modelId="78" generatedId="235" role="context-type"/>
+  <map modelId="78" generatedId="226" role="interface-file"/>
+  <map modelId="78" generatedId="231" role="cycle-method"/>
+  <map modelId="101" generatedId="251"/>
+  <map modelId="100" generatedId="249" role="interface-file"/>
+  <map modelId="100" generatedId="250" role="cycle-method"/>
+  <map modelId="35" generatedId="299"/>
+  <map modelId="31" generatedId="295"/>
+  <map modelId="27" generatedId="291"/>
+  <map modelId="22" generatedId="286"/>
+  <map modelId="20" generatedId="356"/>
+  <map modelId="43" generatedId="306"/>
+  <map modelId="34" generatedId="298"/>
+  <map modelId="30" generatedId="294"/>
+  <map modelId="26" generatedId="290"/>
+  <map modelId="21" generatedId="285"/>
+  <map modelId="87" generatedId="281" role="autom-transitions-type"/>
+  <map modelId="87" generatedId="277" role="autom-states-type"/>
+  <map modelId="111" generatedId="273" role="autom-transitions-type"/>
+  <map modelId="111" generatedId="269" role="autom-states-type"/>
+  <map modelId="5" generatedId="267"/>
+  <map modelId="4" generatedId="266"/>
+  <map modelId="3" generatedId="265"/>
+  <map modelId="2" generatedId="264"/>
+  <map modelId="42" generatedId="263"/>
+  <map modelId="1" generatedId="263"/>
+  <map modelId="6" generatedId="268"/>
+  <map modelId="8" generatedId="353"/>
+  <map modelId="7" generatedId="352"/>
+  <map modelId="18" generatedId="350"/>
+  <map modelId="17" generatedId="351"/>
+  <map modelId="19" generatedId="349"/>
+  <map modelId="16" generatedId="348"/>
+  <map modelId="15" generatedId="347"/>
+  <map modelId="14" generatedId="346"/>
+  <map modelId="13" generatedId="345"/>
+  <map modelId="12" generatedId="344"/>
+  <map modelId="11" generatedId="343"/>
+  <map modelId="10" generatedId="342"/>
+  <map modelId="9" generatedId="341"/>
+</mapping>
+<!--$********** SCADE Suite KCG 32-bit 6.6 (build i19) ***********
+** mapping.xml
+** Generation date: 2020-04-06T19:07:09
+*************************************************************$-->
